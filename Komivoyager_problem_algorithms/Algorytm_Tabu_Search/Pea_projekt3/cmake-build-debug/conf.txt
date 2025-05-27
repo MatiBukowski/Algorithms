@@ -1,0 +1,22 @@
+--- Tabu Search ---
+
+Nazwa pliku (bez podawania formatu):
+ftv47
+
+Kadencja (czas zakazu ruchu):
+40
+
+Rodzaj ruchu (swap, invert, insert):
+swap
+
+Kryterium stopu(1 - liczba iteracji, 2 - czas trwania):
+2
+
+Liczba iteracji:
+500000
+
+Czas trwania (w sekundach):
+20
+
+Critical event (ilość nielepszych wyników, dla których wygeneruje się nowa bazowa ścieżka):
+7
