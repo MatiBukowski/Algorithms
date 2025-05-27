@@ -1,0 +1,17 @@
+# Dane wejściowe (1 - wczytane, 2 - generowane (asymetryczna macierz), 3 - generowane (symetryczna macierz))
+2
+
+# Plik do wczytania danych
+matrix11.txt
+
+# Wyświetlanie (0 - nie, 1 - tak)
+1
+
+# Ilość miast
+10
+
+# Wybrany algorytm (1 - BFS, 2 - DFS, 3 - Best First Search)
+3
+
+# Pomiary do sprawozdania (1 - tak, 2 - nie)
+2
