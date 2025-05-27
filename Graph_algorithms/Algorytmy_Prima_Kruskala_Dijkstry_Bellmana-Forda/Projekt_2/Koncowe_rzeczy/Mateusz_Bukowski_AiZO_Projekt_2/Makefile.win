@@ -1,0 +1,73 @@
+# Project: Projekt1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o menu_MST.o main_menu.o generate.o show.o load.o prim_algorithm.o generate_adj_list.o kruskal_algorithm.o menu_Path.o generateP.o showP.o generate_suc_list.o loadP.o dijkstry_algorithm.o bellmanFord_algorithm.o
+LINKOBJ  = main.o menu_MST.o main_menu.o generate.o show.o load.o prim_algorithm.o generate_adj_list.o kruskal_algorithm.o menu_Path.o generateP.o showP.o generate_suc_list.o loadP.o dijkstry_algorithm.o bellmanFord_algorithm.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = AiZO_Projekt_2.exe
+CXXFLAGS = $(CXXINCS) -std=c++11 -g3 -std=c++11
+CFLAGS   = $(INCS) -std=c++11 -g3 -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+menu_MST.o: menu_MST.cpp
+	$(CPP) -c menu_MST.cpp -o menu_MST.o $(CXXFLAGS)
+
+main_menu.o: main_menu.cpp
+	$(CPP) -c main_menu.cpp -o main_menu.o $(CXXFLAGS)
+
+generate.o: generate.cpp
+	$(CPP) -c generate.cpp -o generate.o $(CXXFLAGS)
+
+show.o: show.cpp
+	$(CPP) -c show.cpp -o show.o $(CXXFLAGS)
+
+load.o: load.cpp
+	$(CPP) -c load.cpp -o load.o $(CXXFLAGS)
+
+prim_algorithm.o: prim_algorithm.cpp
+	$(CPP) -c prim_algorithm.cpp -o prim_algorithm.o $(CXXFLAGS)
+
+generate_adj_list.o: generate_adj_list.cpp
+	$(CPP) -c generate_adj_list.cpp -o generate_adj_list.o $(CXXFLAGS)
+
+kruskal_algorithm.o: kruskal_algorithm.cpp
+	$(CPP) -c kruskal_algorithm.cpp -o kruskal_algorithm.o $(CXXFLAGS)
+
+menu_Path.o: menu_Path.cpp
+	$(CPP) -c menu_Path.cpp -o menu_Path.o $(CXXFLAGS)
+
+generateP.o: generateP.cpp
+	$(CPP) -c generateP.cpp -o generateP.o $(CXXFLAGS)
+
+showP.o: showP.cpp
+	$(CPP) -c showP.cpp -o showP.o $(CXXFLAGS)
+
+generate_suc_list.o: generate_suc_list.cpp
+	$(CPP) -c generate_suc_list.cpp -o generate_suc_list.o $(CXXFLAGS)
+
+loadP.o: loadP.cpp
+	$(CPP) -c loadP.cpp -o loadP.o $(CXXFLAGS)
+
+dijkstry_algorithm.o: dijkstry_algorithm.cpp
+	$(CPP) -c dijkstry_algorithm.cpp -o dijkstry_algorithm.o $(CXXFLAGS)
+
+bellmanFord_algorithm.o: bellmanFord_algorithm.cpp
+	$(CPP) -c bellmanFord_algorithm.cpp -o bellmanFord_algorithm.o $(CXXFLAGS)

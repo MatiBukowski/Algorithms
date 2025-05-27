@@ -1,0 +1,16 @@
+	Algorytm Dijkstry
+Algorytm Dijkstry pozwala na znalezienie najkrótszej ścieżki między dwoma wybranymi wierzchołkami. Algorytm ten zakłada, że wszystkie krawędzie grafu są nieujemne. Algorytm Dijkstry wykorzystuje zachłanne podejście. W każdej iteracji wybierany jest wierzchołek z najkrótszą odległością dojścia, a następnie aktualizowany jest koszt dojścia do jego sąsiadów. Proces ten jest kontynuowany, aż wszystkie wierzchołki zostaną odwiedzone i koszt dojścia do każdego z nich zostanie ustalony jako najkrótszy możliwy. Złożoność obliczeniowa jest zależna od reprezentacji grafu w pamięci komputera. Jeśli graf jest zapisany w postaci macierzy incydencji to algorytm będzie miał złożoność obliczeniową O(V^3), natomiast jeśli graf jest zapisany w postaci listy sąsiedztwa, złożoność obliczeniowa algorytmu wyniesie O(E log⁡〖V)〗.
+
+	Algorytm Bellmana-Forda
+Algorytm Bellmana-Forda pozwala na znalezienie najkrótszej ścieżki między dwoma wybranymi wierzchołkami. Algorytm ten umożliwia korzystanie z ujemnych wag krawędzi w grafie. Algorytm Bellmana-Forda opiera się na metodzie relaksacji krawędzi. Występuje V-1 iteracji, w której każda z krawędzi ulega relaksacji i koszty dojścia do danych wierzchołków są ustawiane na najkrótsze możliwe. Jeśli jednak podczas pojedynczej iteracji nie nastąpiła żadna korekta kosztów dojścia do wierzchołków, algorytm można szybciej zakończyć. Złożoność obliczeniowa algorytmu Bellmana-Forda wynosi O(V*E).
+
+
+	Algorytm Prima
+Algorytm Prima pozwala na znalezienie minimalnego drzewa rozpinającego (MST) badanego grafu. Algorytm Prima wykorzystuje zachłanne podejście. W każdej iteracji wybierany jest wierzchołek z najmniejszą wartością parametru key (waga najkrótszej krawędzi, która dochodzi do danego wierzchołka), a następnie aktualizowany jest parametr key każdego z jego sąsiadów. Proces ten jest kontynuowany, aż wszystkie wierzchołki zostaną odwiedzone i parametr key każdego z nich zostanie ustawiony jako najkrótszy możliwy. Złożoność obliczeniowa jest zależna od kolejki priorytetowej występującej w algorytmie. Jeśli kolejka priorytetowa będzie zwykłą tablicą to algorytm będzie miał złożoność obliczeniową O(V^2), natomiast jeśli kolejka będzie kopcem binarnym, złożoność obliczeniowa algorytmu wyniesie O(E log⁡〖V)〗.
+
+	Algorytm Kruskala
+Algorytm Kruskala pozwala na znalezienie minimalnego drzewa rozpinającego (MST) badanego grafu. W algorytmie tym, na początku sortowane są wszystkie krawędzie według wag, a następnie idąc po każdej krawędzi sprawdza się czy należące do niej wierzchołki należą do różnych poddrzew. Jeśli tak to krawędź dodawana jest do zbioru krawędzi MST, a dwa poddrzewa do których należały sprawdzane wierzchołki łączą się w jedno poddrzewo. Dalej sprawdzana jest reszta pozostałych krawędzi aż do wyczerpania zbioru albo aż zbiór krawędzi MST będzie zawierał V-1 krawędzi. Złożoność obliczeniowa Algorytmu Kruskala wynosi O(E log⁡〖E)〗.
+
+Gdzie:
+V – liczba wierzchołków grafu
+E – liczba krawędzi grafu

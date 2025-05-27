@@ -1,0 +1,103 @@
+#include <iostream>
+#include <ctime>
+
+#include "generate.h"
+#include "show.h"
+
+using namespace std;
+
+void generate_graph(int n, int g) {				// n - ilość wierzchołków, g - gęstość
+	srand(time(NULL));
+	int *U = new int[n-1];						// drzewo rozpinające ma n-1 krawędzi. U to jeden wierzchołek danej krawędzi 
+	int *V = new int[n-1];						// drzewo rozpinające ma n-1 krawędzi. V to drugi wierzchołek danej krawędzi 
+	
+	int *vertex = new int[n];					// tablica przechowująca wierzchołki grafu
+	
+	for(int i=0; i<n; i++) {
+		vertex[i] = i;							// ustawianie wartości (nazw) wierzchołków od 0 do n-1
+	}
+	
+	for(int i=0; i<n; i++) {					// pomieszanie wierzchołków w tablicy wierzchołków
+		int j = rand()%n;						// od 0 do n-1
+		swap(vertex[i], vertex[j]);
+	}
+	
+	for(int i=1; i<n; i++) {					// generowanie krawędzi drzewa - od 1 bo dla indeksu 0 wierzchołek jest pierwszym rodzicem - korzeniem
+		int parent = vertex[rand()%i];			// rodzic jest wierzchołkiem, po którym już ta iteracja przeszła
+		int child = vertex[i];					// dziecko to wierzchołek dla i z iteracji
+		U[i-1] = parent; 
+		V[i-1] = child;
+	}
+	
+	for(int i=0; i<n-1; i++) {
+		cout << "Krawędź " << i+1 << ":  " << U[i] << " - " << V[i] << endl;
+	}
+	
+	int max_edges = (n*(n-1))/2;				// liczba krawędzi w grafie pełnym dla n wierzchołków
+	int density_edges = max_edges*(g*0.01);		// liczba krawędzi dla podanej przez użytkownika gęstości
+	
+	int *Unew = new int[density_edges];			// tworzone są nowe tablice dla większej ilości krawędzi (dla U i V)
+	int *Vnew = new int[density_edges];
+	
+	for(int i=0; i<n-1; i++) {
+		Unew[i] = 0;
+		Vnew[i] = 0;	
+	}
+	
+	for(int i=0; i<n-1; i++) {					// ze starych tablic kopiowane są już istniejące krawędzie do nowych tablic
+		Unew[i] = U[i];
+		Vnew[i] = V[i];
+	}
+	
+	for(int i=n-1; i<density_edges; i++) {		// tworzone są nowe krawędzie aby ilość krawędzi zgadzała się z ilością krawędzi dla podanej gęstości
+		int random1 = rand()%n;
+		int random2 = rand()%n;
+		
+		while(random1 == random2 || check_edge_exist(random1, random2, density_edges, Unew, Vnew)) {	// jeśli wylosowane wierzchołki krawędzi są takie same lub jeśli taka krawędź już istnieje - wylosuj nowe wierzchołki
+			random1 = rand()%n;
+			random2 = rand()%n;
+		}
+		
+		Unew[i] = random1;						// przypisywanie nowych wierzchołków (do zbioru krawędzi)
+		Vnew[i] = random2;
+	}
+	
+	delete [] U;								// usuwanie starych tablic
+	delete [] V;
+	
+	U = Unew;									// przypisywanie starego wskaźnika na nowe tablice
+	V = Vnew;
+	
+	cout << endl;
+	for(int i=0; i<density_edges; i++) {
+		cout << "Krawędź " << i+1 << ":  " << U[i] << " - " << V[i] << endl;
+	}
+	
+	int *weight_edges = new int[density_edges];				// tworzenie tabeli dynamicznej z losowymi wagami dla każdej z krawędzi (od 1 do 30)
+	for(int i=0; i<density_edges; i++) {
+		weight_edges[i] = rand()%30 + 1;
+	}
+	
+	setU(U);							// przekazanie wartości do funkcji show_graph()
+	setV(V);
+	setVertex(vertex);
+	setDensity_edges(density_edges);
+	setN(n);
+	setWeightEdges(weight_edges);
+	
+	//delete [] U;
+	//delete [] V;
+	//delete [] vertex;
+	//delete [] weight_edges;
+	
+}
+
+bool check_edge_exist(int a, int b, int n, int* Unew, int* Vnew) {				// funkcja sprawdzająca czy krawędź o wierzchołkach a i b już istnieje
+	
+	for(int i=0; i<n; i++) {
+		if((a == Unew[i] && b == Vnew[i]) || (b == Unew[i] && a == Vnew[i])) {
+			return true;
+		}
+	}
+	return false;
+}
