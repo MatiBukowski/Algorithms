@@ -1,0 +1,22 @@
+--- Algorytm genetyczny ---
+
+Nazwa pliku (bez podawania formatu):
+rbg403
+
+Współczynnik krzyżowania:
+0.75
+
+Współczynnik mutacji:
+0.35
+
+Metoda krzyżowania (SPC - Single Point Crossover, CC - Cycle Crossover):
+CC
+
+Metoda mutacji (swap, insert):
+insert
+
+Kryterium stopu - czas trwania (w sekundach):
+30
+
+Wielkość populacji (1 - n/4, 2 - n/3, 3 - n/2)
+1
